@@ -4,7 +4,7 @@
 
 Stack* create_stack() {
     Stack* stack = (Stack*)malloc(sizeof(Stack));
-    stack->top = NULL;
+    stack->top = stack->bottom = NULL;
     stack->size = 0;
     return stack;
 }
@@ -17,6 +17,10 @@ void push(Stack* stack, void* value) {
 
     if (stack->top != NULL) {
         stack->top->prev = new_value;
+    }
+
+    if (stack->bottom == NULL) {
+        stack->bottom = new_value;
     }
 
     stack->top = new_value;
@@ -35,6 +39,8 @@ void* pop(Stack* stack) {
     stack->top = top_value->next;
     if (stack->top != NULL) {
         stack->top->prev = NULL;
+    } else {
+        stack->bottom = NULL;
     }
 
     free(top_value);

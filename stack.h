@@ -11,6 +11,7 @@ struct StackValue {
 
 typedef struct Stack {
     StackValue* top;
+    StackValue* bottom;
     int size;
 } Stack;
 
