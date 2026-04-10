@@ -48,3 +48,21 @@ void* pop(Stack* stack) {
 
     return data;
 }
+
+void push_buttom(Stack* stack, void* value) {
+    StackValue* new_value = (StackValue*)malloc(sizeof(StackValue));
+    new_value->data = value;
+    new_value->next = NULL;
+    new_value->prev = stack->bottom;
+
+    if (stack->bottom != NULL) {
+        stack->bottom->next = new_value;
+    }
+
+    if (stack->top == NULL) {
+        stack->top = new_value;
+    }
+
+    stack->bottom = new_value;
+    stack->size++;
+}
