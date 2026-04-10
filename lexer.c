@@ -15,7 +15,7 @@ void add_token(Stack* tokens, TokenType type, int num_value) {
     push_buttom(tokens, (void*)token);
 }
 
-void raise_error(char *s, FILE* fp, int start_offset, int end_offset) {
+void raise_error(char* s, FILE* fp, int start_offset, int end_offset) {
     // long int current_pos = ftell(fp);
     // if(current_pos != -1) {
     //     fprintf(stderr, "ftell cannot be called\n");
@@ -35,7 +35,7 @@ void raise_error(char *s, FILE* fp, int start_offset, int end_offset) {
     exit(EXIT_FAILURE);
 }
 
-int get_word(FILE *fp, char *buf, int buf_size) {
+int get_word(FILE* fp, char* buf, int buf_size) {
     int i = 0;
     char c;
     // 空白文字をスキップ
@@ -64,8 +64,8 @@ int get_word(FILE *fp, char *buf, int buf_size) {
     return i;
 }
 
-Stack *lex(FILE *fp) {
-    Stack *tokens = create_stack();
+Stack* lex(FILE* fp) {
+    Stack* tokens = create_stack();
     char buff[1<<8]; // 256バイトのバッファ
     char c;
     int buff_index = 0;

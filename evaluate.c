@@ -9,8 +9,8 @@ void add(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -32,8 +32,8 @@ void sub(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -55,8 +55,8 @@ void mul(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -67,7 +67,7 @@ void mul(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    v1->data.num_value = v2->data.num_value * v1->data.num_value;
+    v1->data.num_value = v2->data.num_value*  v1->data.num_value;
     free(v2);
     push(s, v1);
 }
@@ -78,8 +78,8 @@ void _div(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -105,8 +105,8 @@ void rem(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -132,8 +132,8 @@ void lt(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -155,8 +155,8 @@ void gt(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -178,8 +178,8 @@ void eq(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: First operand is not a number\n");
@@ -200,7 +200,7 @@ void _pop(Stack* s) {
         fprintf(stderr, "Error: Stack underflow\n");
         exit(EXIT_FAILURE);
     }
-    Value* v = pop(s);
+    DataValue* v = pop(s);
     free(v); // ポップした値を解放
 }
 
@@ -210,8 +210,8 @@ void swap(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
 
     push(s, v1);
     push(s, v2);
@@ -227,9 +227,9 @@ void sel(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
-    Value* v2 = (Value*)pop(s);
-    Value* v3 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
+    DataValue* v2 = (DataValue*)pop(s);
+    DataValue* v3 = (DataValue*)pop(s);
 
     if(v3->type != N) {
         fprintf(stderr, "Error: Condition is not a number\n");
@@ -253,7 +253,7 @@ void nget(Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
 
     if(v1->type != N) {
         fprintf(stderr, "Error: Operand is not a number\n");
@@ -273,19 +273,19 @@ void nget(Stack* s) {
         current = current->next;
     }
 
-    if(((Value *)current->data)->type != N) {
+    if(((DataValue* )current->data)->type != N) {
         fprintf(stderr, "Error: nget target should be a number\n");
         exit(EXIT_FAILURE);
     }
 
     // copy
-    Value* copy = malloc(sizeof(Value));
-    memcpy(copy, current->data, sizeof(Value));
+    DataValue* copy = malloc(sizeof(DataValue));
+    memcpy(copy, current->data, sizeof(DataValue));
 
     push(s, copy);
 }
 
-void exec(Stack *inst_stack, Stack* s) {
+void exec(Stack* inst_stack, Stack* s) {
     // fprintf(stderr, "Error: EXEC not implemented yet\n");
     // exit(EXIT_FAILURE);
 
@@ -294,7 +294,7 @@ void exec(Stack *inst_stack, Stack* s) {
         exit(EXIT_FAILURE);
     }
 
-    Value* v1 = (Value*)pop(s);
+    DataValue* v1 = (DataValue*)pop(s);
 
     if(v1->type != ES) {
         fprintf(stderr, "Error: Operand for exec is not an executable sequence\n");
@@ -314,15 +314,15 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
 
     for(int i = 0 ; i < argc ; i++) {
         // 引数をスタックにプッシュ
-        Value* arg_value = malloc(sizeof(Value));
+        DataValue* arg_value = malloc(sizeof(DataValue));
         arg_value->type = N;
         arg_value->data.num_value = argv[i];
-        push(implict_stack, (void *)arg_value);
+        push(implict_stack, (void* )arg_value);
     }
 
     while(instruction_stack->size > 0) {
         // 命令スタックから命令をポップして評価
-        Value* instruction = (Value*)pop(instruction_stack);
+        DataValue* instruction = (DataValue*)pop(instruction_stack);
         
         int ret;
         switch(instruction->type) {
@@ -384,7 +384,7 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
         exit(EXIT_FAILURE);
     }
 
-    Value* result = (Value*)pop(implict_stack);
+    DataValue* result = (DataValue*)pop(implict_stack);
     if(result->type != N) {
         fprintf(stderr, "Error: Result is not a number\n");
         exit(EXIT_FAILURE);

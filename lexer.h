@@ -29,7 +29,7 @@ typedef struct Token {
     int num_value;
 } Token;
 
-Stack *lex(FILE *fp);
+Stack* lex(FILE* fp);
 void print_tokens(Stack* tokens);
 
 #endif // LEXER_H

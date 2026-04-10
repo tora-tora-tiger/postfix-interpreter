@@ -2,32 +2,15 @@
 #define EVALUATE_H
 
 #include "stack.h"
+#include "parser.h"
 
-typedef enum Command {
-    N,
-    ADD,
-    SUB,
-    MUL,
-    DIV,
-    REM,
-    LT,
-    GT,
-    EQ,
-    POP,
-    SWAP,
-    SEL,
-    NGET,
-    ES, // executable sequence
-    EXEC
-} Command;
-
-typedef struct Value {
+typedef struct DataValue {
     Command type;
     union {
         int num_value;
         Stack* es_stack;
     } data;
-} Value;
+} DataValue;
 
 // typedef struct Result {
 //     bool success;
