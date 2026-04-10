@@ -67,7 +67,6 @@ int get_word(FILE* fp, char* buf, int buf_size) {
 Stack* lex(FILE* fp) {
     Stack* tokens = create_stack();
     char buff[1<<8]; // 256バイトのバッファ
-    char c;
     int buff_index = 0;
     // struct FilePos pos = {1, 0};
 
@@ -154,15 +153,4 @@ void print_tokens(Stack* tokens) {
 
         current = current->next;
     }
-}
-
-int main() {
-    FILE* fp = fopen("test.pf", "r");
-    if(fp == NULL) {
-        perror("Error opening file");
-        return 1;
-    }
-
-    Stack* tokens = lex(fp);
-    print_tokens(tokens);
 }

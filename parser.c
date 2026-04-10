@@ -27,11 +27,6 @@ Stack* _parse(Stack* tokens) {
 
     while(tokens->size > 0) {
         Token* token = (Token*)pop(tokens);
-        if(token->type == NULL) {
-            free(token);
-            fprintf(stderr, "Syntax Error: Unexpected end of input\n");
-            exit(EXIT_FAILURE);
-        }
 
         if(token->type == TK_LEFT_PAREN) {
             push_node_es(st, _parse(tokens));

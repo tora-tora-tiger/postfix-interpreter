@@ -324,7 +324,6 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
         // 命令スタックから命令をポップして評価
         DataValue* instruction = (DataValue*)pop(instruction_stack);
         
-        int ret;
         switch(instruction->type) {
             case AS_N:
                 // 数値はそのままスタックにプッシュ
