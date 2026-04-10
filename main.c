@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
     // 引数の確認
-    if (argc != 2) {
+    if (argc < 2) {
         fprintf(stderr, "Usage: %s <input_file>\n", argv[0]);
         return 1;
     }
@@ -34,6 +34,10 @@ int main(int argc, char* argv[]) {
     puts("");
 
     // TODO: argが整数であることを検証
+    if(asd->argc > argc - 1) {
+        fprintf(stderr, "Error: Not enough arguments provided for execution\n");
+        return 1;
+    }
     int res = evaluate(asd->as_stack, asd->argc, (int*)(argv + 1));
 
     printf("Result: %d\n", res);
