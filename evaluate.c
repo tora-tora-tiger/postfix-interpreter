@@ -25,6 +25,13 @@ void _push_num(Stack* s, int num) {
     push(s, (void*)value);
 }
 
+void _push_es(Stack* s, Stack* es_stack) {
+    DataValue* value = (DataValue*)malloc(sizeof(DataValue));
+    value->type = DT_ES;
+    value->data.es_stack = es_stack;
+    push(s, (void*)value);
+}
+
 void add(Stack* s) {
     if(s->size < 2) {
         fprintf(stderr, "Error: Not enough operands for add\n");
@@ -386,8 +393,8 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
                 nget(implict_stack);
                 break;
             case AS_ES:
-                fprintf(stderr, "Executable sequence should be executed with EXEC command\n");
-                exit(EXIT_FAILURE);
+                _push_es(implict_stack, instruction->data.child);
+                break;
             case AS_EXEC:
                 exec(instruction_stack, implict_stack);
                 break;
