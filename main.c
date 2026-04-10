@@ -33,12 +33,22 @@ int main(int argc, char* argv[]) {
     print_asnodes(asd->as_stack);
     puts("");
 
-    // TODO: argが整数であることを検証
-    if(asd->argc > argc - 1) {
-        fprintf(stderr, "Error: Not enough arguments provided for execution\n");
+    // 実行時引数がプログラムの指示に足りているか
+    if(!(asd->argc <= argc - 2)) {
+        fprintf(stderr, "Error: Not enough arguments provided for execution. Expected %d, got %d.\n", asd->argc, argc - 2);
         return 1;
     }
-    int res = evaluate(asd->as_stack, asd->argc, (int*)(argv + 1));
+    // argが整数であることを検証
+    int *args = (int*)malloc(sizeof(int) * asd->argc);
+    for(int i = 0 ; i < asd->argc ; i++) {
+        char* endptr;
+        args[i] = strtol(argv[i + 2], &endptr, 10);
+        if(*endptr != '\0') {
+            fprintf(stderr, "Error: Argument %s is not a valid integer\n", argv[i + 2]);
+            return 1;
+        }
+    }
+    int res = evaluate(asd->as_stack, asd->argc, args);
 
     printf("Result: %d\n", res);
     return 0;

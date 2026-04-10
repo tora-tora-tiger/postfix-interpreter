@@ -3,6 +3,21 @@
 #include <stdio.h>
 #include <string.h>
 
+void print_stack_with_data_value(Stack* stack) {
+    StackValue* current = stack->bottom;
+    printf("[");
+    while (current != NULL) {
+        DataValue* value = (DataValue*)current->data;
+        if(value->type == DT_N) printf("%d", value->data.num_value);
+        else if(value->type == DT_ES) printf("ES(size=%d)", value->data.es_stack->size);
+        current = current->prev;
+        if (current != NULL) {
+            printf(", ");
+        }
+    }
+    puts("");
+}
+
 void _push_num(Stack* s, int num) {
     DataValue* value = (DataValue*)malloc(sizeof(DataValue));
     value->type = DT_N;
@@ -323,6 +338,8 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
         arg_value->data.num_value = argv[i];
         push(implict_stack, (void* )arg_value);
     }
+    printf("Initial stack with arguments: ");
+    print_stack_with_data_value(implict_stack);
 
     while(instruction_stack->size > 0) {
         // 命令スタックから命令をポップして評価
@@ -330,7 +347,6 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
         
         switch(instruction->cmd) {
             case AS_N:
-                // 数値はそのままスタックにプッシュ
                 _push_num(implict_stack, instruction->data.num_value);
                 break;
             case AS_ADD:
@@ -379,11 +395,13 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
                 fprintf(stderr, "Error: Unknown command %s\n", print_asnode(instruction->cmd));
                 exit(EXIT_FAILURE);
         }
+        printf("After executing %s, stack: ", print_asnode(instruction->cmd));
+        print_stack_with_data_value(implict_stack);
         free(instruction);
     }
 
-    if(implict_stack->size != 1) {
-        fprintf(stderr, "Error: Stack should have exactly one value after evaluation\n");
+    if(implict_stack->size < 1) {
+        fprintf(stderr, "Error: Stack should not be empty\n");
         exit(EXIT_FAILURE);
     }
 

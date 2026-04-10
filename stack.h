@@ -18,6 +18,6 @@ typedef struct Stack {
 Stack* create_stack();
 void push(Stack* stack, void* value);
 void* pop(Stack* stack);
-void push_buttom(Stack* stack, void* value);
+void push_bottom(Stack* stack, void* value);
 
 #endif // STACK_H

@@ -12,7 +12,7 @@ void add_token(Stack* tokens, TokenType type, int num_value) {
     Token* token = (Token*)malloc(sizeof(Token));
     token->type = type;
     token->num_value = num_value;
-    push_buttom(tokens, (void*)token);
+    push_bottom(tokens, (void*)token);
 }
 
 void raise_error(char* s, FILE* fp, int start_offset, int end_offset) {

@@ -6,20 +6,20 @@ void push_node_num(Stack* st, Command cmd, int num_value) {
     ASNode* node = (ASNode*)malloc(sizeof(ASNode));
     node->cmd = cmd;
     node->data.num_value = num_value;
-    push_buttom(st, node);
+    push_bottom(st, node);
 }
 
 void push_node_cmd(Stack* st, Command cmd) {
     ASNode* node = (ASNode*)malloc(sizeof(ASNode));
     node->cmd = cmd;
-    push_buttom(st, node);
+    push_bottom(st, node);
 }
 
 void push_node_es(Stack* st, Stack* child) {
     ASNode* node = (ASNode*)malloc(sizeof(ASNode));
     node->cmd = AS_ES;
     node->data.child = child;
-    push_buttom(st, node);
+    push_bottom(st, node);
 }
 
 Stack* _parse(Stack* tokens) {
