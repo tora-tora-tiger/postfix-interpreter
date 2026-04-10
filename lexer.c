@@ -103,64 +103,52 @@ Stack* lex(FILE* fp) {
     return tokens;
 }
 
+char* print_token(TokenType type) {
+    switch(type) {
+        case TK_LEFT_PAREN:
+            return "LEFT_PAREN";
+        case TK_RIGHT_PAREN:
+            return "RIGHT_PAREN";
+        case TK_POSTFIX:
+            return "POSTFIX";
+        case TK_NUMBER:
+            return "NUMBER";
+        case TK_ADD:
+            return "ADD";
+        case TK_SUB:
+            return "SUB";
+        case TK_MUL:
+            return "MUL";
+        case TK_DIV:
+            return "DIV";
+        case TK_REM:
+            return "REM";
+        case TK_LT:
+            return "LT";
+        case TK_GT:
+            return "GT";
+        case TK_EQ:
+            return "EQ";
+        case TK_POP:
+            return "POP";
+        case TK_SWAP:
+            return "SWAP";
+        case TK_SEL:
+            return "SEL";
+        case TK_NGET:
+            return "NGET";
+        case TK_EXEC:
+            return "EXEC";
+    }
+    return "";
+}
+
 void print_tokens(Stack* tokens) {
     StackValue* current = tokens->top;
     while (current != NULL) {
         Token* token = (Token*)current->data;
 
-        switch(token->type) {
-            case TK_LEFT_PAREN:
-                printf("LEFT_PAREN");
-                break;
-            case TK_RIGHT_PAREN:
-                printf("RIGHT_PAREN");
-                break;
-            case TK_POSTFIX:
-                printf("POSTFIX");
-                break;
-            case TK_NUMBER:
-                printf("NUMBER");
-                break;
-            case TK_ADD:
-                printf("ADD");
-                break;
-            case TK_SUB:
-                printf("SUB");
-                break;
-            case TK_MUL:
-                printf("MUL");
-                break;
-            case TK_DIV:
-                printf("DIV");
-                break;
-            case TK_REM:
-                printf("REM");
-                break;
-            case TK_LT:
-                printf("LT");
-                break;
-            case TK_GT:
-                printf("GT");
-                break;
-            case TK_EQ:
-                printf("EQ");
-                break;
-            case TK_POP:
-                printf("POP");
-                break;
-            case TK_SWAP:
-                printf("SWAP");
-                break;
-            case TK_SEL:
-                printf("SEL");
-                break;
-            case TK_NGET:
-                printf("NGET");
-                break;
-            case TK_EXEC:
-                printf("EXEC");
-                break;
-        }
+        printf("%s", print_token(token->type));
         if(token->type == TK_NUMBER) printf(", %d\n", token->num_value);
         else printf("\n");
 

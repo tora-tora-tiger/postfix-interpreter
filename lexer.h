@@ -30,6 +30,7 @@ typedef struct Token {
 } Token;
 
 Stack* lex(FILE* fp);
+char* print_token(TokenType type);
 void print_tokens(Stack* tokens);
 
 #endif // LEXER_H
