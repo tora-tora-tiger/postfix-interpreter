@@ -30,7 +30,7 @@ Stack* _parse(Stack* tokens) {
 
         if(token->type == TK_LEFT_PAREN) {
             push_node_es(st, _parse(tokens));
-        } else if(token->type == TK_POSTFIX) {
+        } else if(token->type == TK_RIGHT_PAREN) {
             return st;
         }
         else switch(token->type) {
