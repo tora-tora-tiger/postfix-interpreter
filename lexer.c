@@ -140,7 +140,7 @@ char* print_token(TokenType type) {
         case TK_EXEC:
             return "EXEC";
     }
-    return "";
+    return "UNKNOWN";
 }
 
 void print_tokens(Stack* tokens) {

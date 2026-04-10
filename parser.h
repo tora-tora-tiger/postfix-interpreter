@@ -30,6 +30,11 @@ typedef struct ASNode {
     } data;
 } ASNode;
 
-Stack* parse(Stack* tokens);
+typedef struct ASData {
+    Stack* as_stack;
+    int argc;
+} ASD;
+
+ASD* parse(Stack* tokens);
 
 #endif // PARSER_H
