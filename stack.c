@@ -10,7 +10,7 @@ Stack* create_stack() {
 }
 
 void push(Stack* stack, void* value) {
-    Value* new_value = (Value*)malloc(sizeof(Value));
+    StackValue* new_value = (StackValue*)malloc(sizeof(StackValue));
     new_value->data = value;
     new_value->next = stack->top;
     new_value->prev = NULL;
@@ -29,7 +29,7 @@ void* pop(Stack* stack) {
         exit(EXIT_FAILURE);
     }
 
-    Value* top_value = stack->top;
+    StackValue* top_value = stack->top;
     void* data = top_value->data;
 
     stack->top = top_value->next;

@@ -2,15 +2,15 @@
 #define STACK_H
 
 
-typedef struct Value Value;
-struct Value {
-    Value* next;
-    Value* prev;
+typedef struct StackValue StackValue;
+struct StackValue {
+    StackValue* next;
+    StackValue* prev;
     void* data;
 };
 
 typedef struct Stack {
-    Value* top;
+    StackValue* top;
     int size;
 } Stack;
 
