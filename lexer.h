@@ -5,23 +5,23 @@
 #include "stack.h"
 
 typedef enum TokenType {
-    LEFT_PAREN,
-    RIGHT_PAREN,
-    POSTFIX,
-    NUMBER,
-    ADD,
-    SUB,
-    MUL,
-    DIV,
-    REM,
-    LT,
-    GT,
-    EQ,
-    POP,
-    SWAP,
-    SEL,
-    NGET,
-    EXEC
+    TK_LEFT_PAREN,
+    TK_RIGHT_PAREN,
+    TK_POSTFIX,
+    TK_NUMBER,
+    TK_ADD,
+    TK_SUB,
+    TK_MUL,
+    TK_DIV,
+    TK_REM,
+    TK_LT,
+    TK_GT,
+    TK_EQ,
+    TK_POP,
+    TK_SWAP,
+    TK_SEL,
+    TK_NGET,
+    TK_EXEC
 } TokenType;
 
 typedef struct Token {

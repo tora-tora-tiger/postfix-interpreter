@@ -74,29 +74,29 @@ Stack* lex(FILE* fp) {
     while(get_word(fp, buff, sizeof(buff))) {
         if(buff[0] == '\0') continue;
 
-        if(buff[0] == '(') add_token(tokens, LEFT_PAREN, 0);
-        else if(buff[0] == ')') add_token(tokens, RIGHT_PAREN, 0);
-        else if(strcmp(buff, "postfix") == 0) add_token(tokens, POSTFIX, 0);
-        else if(strcmp(buff, "add") == 0) add_token(tokens, ADD, 0);
-        else if(strcmp(buff, "sub") == 0) add_token(tokens, SUB, 0);
-        else if(strcmp(buff, "mul") == 0) add_token(tokens, MUL, 0);
-        else if(strcmp(buff, "div") == 0) add_token(tokens, DIV, 0);
-        else if(strcmp(buff, "rem") == 0) add_token(tokens, REM, 0);
-        else if(strcmp(buff, "lt") == 0) add_token(tokens, LT, 0);
-        else if(strcmp(buff, "gt") == 0) add_token(tokens, GT, 0);
-        else if(strcmp(buff, "eq") == 0) add_token(tokens, EQ, 0);
-        else if(strcmp(buff, "pop") == 0) add_token(tokens, POP, 0);
-        else if(strcmp(buff, "swap") == 0) add_token(tokens, SWAP, 0);
-        else if(strcmp(buff, "sel") == 0) add_token(tokens, SEL, 0);
-        else if(strcmp(buff, "nget") == 0) add_token(tokens, NGET, 0);
-        else if(strcmp(buff, "exec") == 0) add_token(tokens, EXEC, 0);
+        if(buff[0] == '(') add_token(tokens, TK_LEFT_PAREN, 0);
+        else if(buff[0] == ')') add_token(tokens, TK_RIGHT_PAREN, 0);
+        else if(strcmp(buff, "postfix") == 0) add_token(tokens, TK_POSTFIX, 0);
+        else if(strcmp(buff, "add") == 0) add_token(tokens, TK_ADD, 0);
+        else if(strcmp(buff, "sub") == 0) add_token(tokens, TK_SUB, 0);
+        else if(strcmp(buff, "mul") == 0) add_token(tokens, TK_MUL, 0);
+        else if(strcmp(buff, "div") == 0) add_token(tokens, TK_DIV, 0);
+        else if(strcmp(buff, "rem") == 0) add_token(tokens, TK_REM, 0);
+        else if(strcmp(buff, "lt") == 0) add_token(tokens, TK_LT, 0);
+        else if(strcmp(buff, "gt") == 0) add_token(tokens, TK_GT, 0);
+        else if(strcmp(buff, "eq") == 0) add_token(tokens, TK_EQ, 0);
+        else if(strcmp(buff, "pop") == 0) add_token(tokens, TK_POP, 0);
+        else if(strcmp(buff, "swap") == 0) add_token(tokens, TK_SWAP, 0);
+        else if(strcmp(buff, "sel") == 0) add_token(tokens, TK_SEL, 0);
+        else if(strcmp(buff, "nget") == 0) add_token(tokens, TK_NGET, 0);
+        else if(strcmp(buff, "exec") == 0) add_token(tokens, TK_EXEC, 0);
         else {
             char* endptr;
             int num_value = strtol(buff, &endptr, 10);
             if(*endptr != '\0') {
                 raise_error(buff, fp, buff_index - strlen(buff), strlen(buff));
             }
-            add_token(tokens, NUMBER, num_value);
+            add_token(tokens, TK_NUMBER, num_value);
         }
     }
 
@@ -109,59 +109,59 @@ void print_tokens(Stack* tokens) {
         Token* token = (Token*)current->data;
 
         switch(token->type) {
-            case LEFT_PAREN:
+            case TK_LEFT_PAREN:
                 printf("LEFT_PAREN");
                 break;
-            case RIGHT_PAREN:
+            case TK_RIGHT_PAREN:
                 printf("RIGHT_PAREN");
                 break;
-            case POSTFIX:
+            case TK_POSTFIX:
                 printf("POSTFIX");
                 break;
-            case NUMBER:
+            case TK_NUMBER:
                 printf("NUMBER");
                 break;
-            case ADD:
+            case TK_ADD:
                 printf("ADD");
                 break;
-            case SUB:
+            case TK_SUB:
                 printf("SUB");
                 break;
-            case MUL:
+            case TK_MUL:
                 printf("MUL");
                 break;
-            case DIV:
+            case TK_DIV:
                 printf("DIV");
                 break;
-            case REM:
+            case TK_REM:
                 printf("REM");
                 break;
-            case LT:
+            case TK_LT:
                 printf("LT");
                 break;
-            case GT:
+            case TK_GT:
                 printf("GT");
                 break;
-            case EQ:
+            case TK_EQ:
                 printf("EQ");
                 break;
-            case POP:
+            case TK_POP:
                 printf("POP");
                 break;
-            case SWAP:
+            case TK_SWAP:
                 printf("SWAP");
                 break;
-            case SEL:
+            case TK_SEL:
                 printf("SEL");
                 break;
-            case NGET:
+            case TK_NGET:
                 printf("NGET");
                 break;
-            case EXEC:
+            case TK_EXEC:
                 printf("EXEC");
                 break;
         }
-        if(token->type == NUMBER) printf(", %d\n", token->num_value);
+        if(token->type == TK_NUMBER) printf(", %d\n", token->num_value);
         else printf("\n");
 
         current = current->next;
