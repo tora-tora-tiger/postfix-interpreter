@@ -5,18 +5,18 @@
 
 void add(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for add\n");
+        fprintf(stderr, "Error: AS_Not enough operands for add\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -28,18 +28,18 @@ void add(Stack* s) {
 
 void sub(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for sub\n");
+        fprintf(stderr, "Error: AS_Not enough operands for sub\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -51,18 +51,18 @@ void sub(Stack* s) {
 
 void mul(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for mul\n");
+        fprintf(stderr, "Error: AS_Not enough operands for mul\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -74,18 +74,18 @@ void mul(Stack* s) {
 
 void _div(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for div\n");
+        fprintf(stderr, "Error: AS_Not enough operands for div\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -101,18 +101,18 @@ void _div(Stack* s) {
 
 void rem(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for rem\n");
+        fprintf(stderr, "Error: AS_Not enough operands for rem\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -128,18 +128,18 @@ void rem(Stack* s) {
 
 void lt(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for lt\n");
+        fprintf(stderr, "Error: AS_Not enough operands for lt\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -151,18 +151,18 @@ void lt(Stack* s) {
 
 void gt(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for gt\n");
+        fprintf(stderr, "Error: AS_Not enough operands for gt\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -174,18 +174,18 @@ void gt(Stack* s) {
 
 void eq(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for eq\n");
+        fprintf(stderr, "Error: AS_Not enough operands for eq\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
     DataValue* v2 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: First operand is not a number\n");
         exit(EXIT_FAILURE);
     }
-    if(v2->type != N) {
+    if(v2->type != AS_N) {
         fprintf(stderr, "Error: Second operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -206,7 +206,7 @@ void _pop(Stack* s) {
 
 void swap(Stack* s) {
     if(s->size < 2) {
-        fprintf(stderr, "Error: Not enough operands for swap\n");
+        fprintf(stderr, "Error: AS_Not enough operands for swap\n");
         exit(EXIT_FAILURE);
     }
 
@@ -223,7 +223,7 @@ void swap(Stack* s) {
  */
 void sel(Stack* s) {
     if(s->size < 3) {
-        fprintf(stderr, "Error: Not enough operands for sel\n");
+        fprintf(stderr, "Error: AS_Not enough operands for sel\n");
         exit(EXIT_FAILURE);
     }
 
@@ -231,7 +231,7 @@ void sel(Stack* s) {
     DataValue* v2 = (DataValue*)pop(s);
     DataValue* v3 = (DataValue*)pop(s);
 
-    if(v3->type != N) {
+    if(v3->type != AS_N) {
         fprintf(stderr, "Error: Condition is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -249,13 +249,13 @@ void sel(Stack* s) {
 
 void nget(Stack* s) {
     if(s->size < 1) {
-        fprintf(stderr, "Error: Not enough operands for nget\n");
+        fprintf(stderr, "Error: AS_Not enough operands for nget\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
 
-    if(v1->type != N) {
+    if(v1->type != AS_N) {
         fprintf(stderr, "Error: Operand is not a number\n");
         exit(EXIT_FAILURE);
     }
@@ -273,7 +273,7 @@ void nget(Stack* s) {
         current = current->next;
     }
 
-    if(((DataValue* )current->data)->type != N) {
+    if(((DataValue* )current->data)->type != AS_N) {
         fprintf(stderr, "Error: nget target should be a number\n");
         exit(EXIT_FAILURE);
     }
@@ -290,13 +290,13 @@ void exec(Stack* inst_stack, Stack* s) {
     // exit(EXIT_FAILURE);
 
     if(s->size < 1) {
-        fprintf(stderr, "Error: Not enough operands for exec\n");
+        fprintf(stderr, "Error: AS_Not enough operands for exec\n");
         exit(EXIT_FAILURE);
     }
 
     DataValue* v1 = (DataValue*)pop(s);
 
-    if(v1->type != ES) {
+    if(v1->type != AS_ES) {
         fprintf(stderr, "Error: Operand for exec is not an executable sequence\n");
         exit(EXIT_FAILURE);
     }
@@ -315,7 +315,7 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
     for(int i = 0 ; i < argc ; i++) {
         // 引数をスタックにプッシュ
         DataValue* arg_value = malloc(sizeof(DataValue));
-        arg_value->type = N;
+        arg_value->type = AS_N;
         arg_value->data.num_value = argv[i];
         push(implict_stack, (void* )arg_value);
     }
@@ -326,50 +326,50 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
         
         int ret;
         switch(instruction->type) {
-            case N:
+            case AS_N:
                 // 数値はそのままスタックにプッシュ
                 push(implict_stack, instruction);
                 break;
-            case ADD:
+            case AS_ADD:
                 add(implict_stack);
                 break;
-            case SUB:
+            case AS_SUB:
                 sub(implict_stack);
                 break;
-            case MUL:
+            case AS_MUL:
                 mul(implict_stack);
                 break;
-            case DIV:
+            case AS_DIV:
                 _div(implict_stack);
                 break;
-            case REM:
+            case AS_REM:
                 rem(implict_stack);
                 break;
-            case LT:
+            case AS_LT:
                 // LTの実装
                 break;
-            case GT:
+            case AS_GT:
                 // GTの実装
                 break;
-            case EQ:
+            case AS_EQ:
                 // EQの実装
                 break;
-            case POP:
+            case AS_POP:
                 _pop(implict_stack);
                 break;
-            case SWAP:
+            case AS_SWAP:
                 swap(implict_stack);
                 break;
-            case SEL:
+            case AS_SEL:
                 sel(implict_stack);
                 break;
-            case NGET:
+            case AS_NGET:
                 nget(implict_stack);
                 break;
-            case ES:
+            case AS_ES:
                 fprintf(stderr, "Executable sequence should be executed with EXEC command\n");
                 exit(EXIT_FAILURE);
-            case EXEC:
+            case AS_EXEC:
                 exec(instruction_stack, implict_stack);
                 break;
             default:
@@ -385,7 +385,7 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
     }
 
     DataValue* result = (DataValue*)pop(implict_stack);
-    if(result->type != N) {
+    if(result->type != AS_N) {
         fprintf(stderr, "Error: Result is not a number\n");
         exit(EXIT_FAILURE);
     }

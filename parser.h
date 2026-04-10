@@ -5,21 +5,21 @@
 #include "lexer.h"
 
 typedef enum Command {
-    N,
-    ADD,
-    SUB,
-    MUL,
-    DIV,
-    REM,
-    LT,
-    GT,
-    EQ,
-    POP,
-    SWAP,
-    SEL,
-    NGET,
-    ES, // executable sequence
-    EXEC
+    AS_N,
+    AS_ADD,
+    AS_SUB,
+    AS_MUL,
+    AS_DIV,
+    AS_REM,
+    AS_LT,
+    AS_GT,
+    AS_EQ,
+    AS_POP,
+    AS_SWAP,
+    AS_SEL,
+    AS_NGET,
+    AS_ES, // executable sequence
+    AS_EXEC
 } Command;
 
 typedef struct ASNode {
