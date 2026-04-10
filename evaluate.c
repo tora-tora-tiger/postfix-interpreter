@@ -285,9 +285,28 @@ void nget(Stack* s) {
     push(s, copy);
 }
 
-void exec(Stack* s) {
-    fprintf(stderr, "Error: EXEC not implemented yet\n");
-    exit(EXIT_FAILURE);
+void exec(Stack *inst_stack, Stack* s) {
+    // fprintf(stderr, "Error: EXEC not implemented yet\n");
+    // exit(EXIT_FAILURE);
+
+    if(s->size < 1) {
+        fprintf(stderr, "Error: Not enough operands for exec\n");
+        exit(EXIT_FAILURE);
+    }
+
+    Value* v1 = (Value*)pop(s);
+
+    if(v1->type != ES) {
+        fprintf(stderr, "Error: Operand for exec is not an executable sequence\n");
+        exit(EXIT_FAILURE);
+    }
+
+    Stack* es_stack = v1->data.es_stack;
+    free(v1);
+
+    es_stack->bottom->next = inst_stack->top;
+    free(inst_stack);
+    inst_stack = es_stack;
 }
 
 int evaluate(Stack* instruction_stack, int argc, int* argv) {
@@ -351,9 +370,13 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
                 fprintf(stderr, "Executable sequence should be executed with EXEC command\n");
                 exit(EXIT_FAILURE);
             case EXEC:
-                exec(implict_stack);
+                exec(instruction_stack, implict_stack);
                 break;
+            default:
+                fprintf(stderr, "Error: Unknown command %d\n", instruction->type);
+                exit(EXIT_FAILURE);
         }
+        free(instruction);
     }
 
     if(implict_stack->size != 1) {
