@@ -4,8 +4,13 @@
 #include "stack.h"
 #include "parser.h"
 
+typedef enum DataType{
+    DT_N,
+    DT_ES
+} DataType;
+
 typedef struct DataValue {
-    Command type;
+    DataType type;
     union {
         int num_value;
         Stack* es_stack;
