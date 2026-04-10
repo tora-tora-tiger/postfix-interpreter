@@ -35,6 +35,9 @@ typedef struct ASData {
     int argc;
 } ASD;
 
+char* print_asnode(Command cmd);
+void print_asnodes(Stack* as_stack);
+
 ASD* parse(Stack* tokens);
 
 #endif // PARSER_H

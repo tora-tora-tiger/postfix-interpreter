@@ -124,3 +124,56 @@ ASD* parse(Stack* tokens) {
 
     return asd;
 }
+
+char* print_asnode(Command cmd) {
+    switch(cmd) {
+        case AS_N:
+            return "N";
+        case AS_ADD:
+            return "ADD";
+        case AS_SUB:
+            return "SUB";
+        case AS_MUL:
+            return "MUL";
+        case AS_DIV:
+            return "DIV";
+        case AS_REM:
+            return "REM";
+        case AS_LT:
+            return "LT";
+        case AS_GT:
+            return "GT";
+        case AS_EQ:
+            return "EQ";
+        case AS_POP:
+            return "POP";
+        case AS_SWAP:
+            return "SWAP";
+        case AS_SEL:
+            return "SEL";
+        case AS_NGET:
+            return "NGET";
+        case AS_ES:
+            return "ES";
+        case AS_EXEC:
+            return "EXEC";
+    }
+    return "UNKNOWN";
+}
+
+void print_asnodes(Stack* as_stack) {
+    StackValue* current = as_stack->top;
+    while (current != NULL) {
+        ASNode* node = (ASNode*)current->data;
+
+        printf("%s", print_asnode(node->cmd));
+        if(node->cmd == AS_N) printf(", %d\n", node->data.num_value);
+        else if(node->cmd == AS_ES) {
+            printf("\n");
+            print_asnodes(node->data.child);
+        }
+        else printf("\n");
+
+        current = current->next;
+    }
+}

@@ -1,6 +1,6 @@
 CC = gcc-15
 CFLAGS = -Wall -Wextra
-TARGET = main
+TARGET = pf_int
 SRCS = main.c stack.c lexer.c parser.c evaluate.c
 BUILD_DIR = build
 OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.c=.o))
