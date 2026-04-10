@@ -21,16 +21,6 @@ typedef enum Command {
     EXEC
 } Command;
 
-// typedef struct NumericalData {
-//     Command type;
-//     int value;
-// } NumericalData;
-
-// typedef struct ESData {
-//     Command type;
-//     Stack* es_stack;
-// } ESData;
-
 typedef struct Value {
     Command type;
     union {

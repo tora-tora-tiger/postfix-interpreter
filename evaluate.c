@@ -72,7 +72,7 @@ void mul(Stack* s) {
     push(s, v1);
 }
 
-void div(Stack* s) {
+void _div(Stack* s) {
     if(s->size < 2) {
         fprintf(stderr, "Error: Not enough operands for div\n");
         exit(EXIT_FAILURE);
@@ -340,7 +340,7 @@ int evaluate(Stack* instruction_stack, int argc, int* argv) {
                 mul(implict_stack);
                 break;
             case DIV:
-                div(implict_stack);
+                _div(implict_stack);
                 break;
             case REM:
                 rem(implict_stack);
