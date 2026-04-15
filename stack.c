@@ -66,3 +66,25 @@ void push_bottom(Stack* stack, void* value) {
     stack->bottom = new_value;
     stack->size++;
 }
+
+void* pop_bottom(Stack* stack) {
+    if (stack->size == 0) {
+        fprintf(stderr, "Error: Stack underflow\n");
+        exit(EXIT_FAILURE);
+    }
+
+    StackValue* bottom_value = stack->bottom;
+    void* data = bottom_value->data;
+
+    stack->bottom = bottom_value->prev;
+    if (stack->bottom != NULL) {
+        stack->bottom->next = NULL;
+    } else {
+        stack->top = NULL;
+    }
+
+    free(bottom_value);
+    stack->size--;
+
+    return data;
+}

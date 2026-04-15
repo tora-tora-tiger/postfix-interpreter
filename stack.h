@@ -19,5 +19,6 @@ Stack* create_stack();
 void push(Stack* stack, void* value);
 void* pop(Stack* stack);
 void push_bottom(Stack* stack, void* value);
+void* pop_bottom(Stack* stack);
 
 #endif // STACK_H

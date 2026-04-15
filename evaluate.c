@@ -330,9 +330,17 @@ void exec(Stack* inst_stack, Stack* s) {
     Stack* es_stack = v1->data.es_stack;
     free(v1);
 
+    // ()というESの場合
+    if(es_stack->bottom == NULL) {
+        free(es_stack);
+        return;
+    }
+    
     es_stack->bottom->next = inst_stack->top;
-    free(inst_stack);
-    inst_stack = es_stack;
+    if(inst_stack->top != NULL) inst_stack->top->prev = es_stack->bottom;
+    inst_stack->size += es_stack->size;
+    inst_stack->top = es_stack->top;
+    free(es_stack);
 }
 
 int evaluate(Stack* instruction_stack, int argc, int* argv) {
