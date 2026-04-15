@@ -346,7 +346,7 @@ void exec(Stack* inst_stack, Stack* s) {
 int evaluate(Stack* instruction_stack, int argc, int* argv) {
     Stack* implict_stack = create_stack();
 
-    for(int i = 0 ; i < argc ; i++) {
+    for(int i = argc-1 ; i >= 0 ; i--) {
         // 引数をスタックにプッシュ
         DataValue* arg_value = malloc(sizeof(DataValue));
         arg_value->type = DT_N;
