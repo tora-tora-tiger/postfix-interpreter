@@ -89,7 +89,7 @@ Stack* _parse(Stack* tokens) {
 
 ASD* parse(Stack* tokens) {
     // (postfix N __)をみる
-    if(tokens->size < 2) {
+    if(tokens->size <= 2) {
         fprintf(stderr, "Syntax Error: Not enough tokens\n");
         exit(EXIT_FAILURE);
     }
@@ -117,6 +117,8 @@ ASD* parse(Stack* tokens) {
     free(third);
 
     Stack* st = _parse(tokens);
+
+    free(tokens);
 
     ASD* asd = (ASD*)malloc(sizeof(ASD));
     asd->as_stack = st;
